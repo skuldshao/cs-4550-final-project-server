@@ -5,7 +5,7 @@ const findUsers = async (req, res) => {
     res.json(users);
 }
 
-const findUser = async (req, res) => {
+const findUserById = async (req, res) => {
     const userId = req.params.userId;
     const user = await userDao.findUserById(userId);
     res.json(user);
@@ -45,7 +45,7 @@ const deleteUser = async (req, res) => {
 export default (app) => {
     app.post('/api/users', createUser);
     app.get('/api/users', findUsers);
-    app.get('/api/users/:userId', findUser);
+    app.get('/api/users/:userId', findUserById);
     app.put('/api/users/:userId', updateUser);
     app.delete('/api/users/:userId', deleteUser);
 }
