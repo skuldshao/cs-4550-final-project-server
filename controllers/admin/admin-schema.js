@@ -9,7 +9,6 @@ const schema = mongoose.Schema({
     handle: String,
     userName: String,
     joined: Date,
-    
 }, {collection: 'admin'});
 
 export default schema;
