@@ -16,7 +16,6 @@ AdminController(app);
 ReviewController(app);
 UserController(app);
 app.get('/', (req, res) => {
-    res.send('Life is good!')});
-
+    res.send('GoodSounds API')});
 
 app.listen(4000);
