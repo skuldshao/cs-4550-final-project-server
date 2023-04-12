@@ -5,6 +5,12 @@ const findAdmins = async (req, res) => {
     res.json(admins);
 }
 
+const findAdminById = async (req, res) => {
+    const adminId = req.params.adminId;
+    const admin = await adminDao.findAdminById(adminId);
+    res.json(admin);
+}
+
 const createAdmin = async (req, res) => {
     const newAdmin = req.body;
     newAdmin.adminKey = "secretKey";
@@ -31,8 +37,9 @@ const deleteAdmin = async (req, res) => {
 }
 
 export default (app) => {
-    app.post('/api/admins', createAdmin);
-    app.get('/api/admins', findAdmins);
-    app.put('/api/admins/:adminId', updateAdmin);
-    app.delete('/api/admins/:adminId', deleteAdmin);
+    app.post('/api/admin', createAdmin);
+    app.get('/api/admin', findAdmins);
+    app.get('/api/admin/:adminId', findAdminById);
+    app.put('/api/admin/:adminId', updateAdmin);
+    app.delete('/api/admin/:adminId', deleteAdmin);
 }
