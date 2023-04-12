@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const CONNECTION_STRING = "fill in the blank here";
+const CONNECTION_STRING = "fill_in_here";
 mongoose.connect(CONNECTION_STRING);
 
 AdminController(app);
