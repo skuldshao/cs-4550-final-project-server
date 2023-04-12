@@ -5,21 +5,21 @@ const findReviews = async (req, res) => {
     res.json(reviews);
 }
 
+const findReviewsBySongId = async (req, res) => {
+    const songId = req.params.songId;
+    const review = await reviewDao.findReviewsBySongId(songId);
+    res.json(review);
+}
+
+const findReviewsByUserId = async (req, res) => {
+    const userId = req.params.userId;
+    const review = await reviewDao.findReviewsByUserId(userId);
+    res.json(review);
+}
+
 const findReviewById = async (req, res) => {
     const reviewId = req.params.reviewId;
     const review = await reviewDao.findReviewById(reviewId);
-    res.json(review);
-}
-
-const findReviewBySongId = async (req, res) => {
-    const songId = req.params.songId;
-    const review = await reviewDao.findReviewBySongId(songId);
-    res.json(review);
-}
-
-const findReviewByUserId = async (req, res) => {
-    const userId = req.params.userId;
-    const review = await reviewDao.findReviewByUserId(userId);
     res.json(review);
 }
 
@@ -50,9 +50,9 @@ const deleteReview = async (req, res) => {
 export default (app) => {
     app.post('/api/reviews', createReview);
     app.get('/api/reviews', findReviews);
+    app.get('/api/reviews/song/:songId', findReviewsBySongId);
+    app.get('/api/reviews/user/:userId', findReviewsByUserId);
     app.get('/api/reviews/:reviewId', findReviewById);
-    app.get('/api/reviews/song/:songId', findReviewBySongId);
-    app.get('/api/reviews/user/:userId', findReviewByUserId);
     app.put('/api/reviews/:reviewId', updateReview);
     app.delete('/api/reviews/:reviewId', deleteReview);
 }
