@@ -13,14 +13,13 @@ const findUserById = async (req, res) => {
 
 const createUser = async (req, res) => {
     const newUser = req.body;
-    newUser.joined = Date.now();
-    newUser.bio = "";
-    newUser.location = "";
-    newUser.locationPublic = false;
-    newUser.following = new Array();
-    newUser.followers = new Array();
-    newUser.reviews = new Array();
-    newUser.favoriteSongs = new Array();
+    newUser.joined = 2023;
+    newUser.following = [];
+    newUser.followers = [];
+    newUser.reviews = [];
+    newUser.favoriteSongs = [];
+    newUser.newSongs = [];
+    newUser.comments = [];
     const insertedUser = await userDao
         .createUser(newUser);
     res.json(insertedUser);
