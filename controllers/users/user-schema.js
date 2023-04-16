@@ -3,11 +3,11 @@ import mongoose from 'mongoose';
 const ObjectId = mongoose.Types.ObjectId;
 
 const schema = mongoose.Schema({
-    email: {String, unique: true},
+    email: {type: String, unique: true},
     number: Number,
     password: String,
     avatarIcon: Number,
-    handle: {String, unique: true},
+    handle: {type: String, unique: true},
     userName: String,
     joined: Number,
     bio: String,

@@ -1,12 +1,12 @@
 import mongoose from 'mongoose';
 
 const schema = mongoose.Schema({
-    email: {String, unique: true},
+    email: {type: String, unique: true},
     number: Number,
     adminKey: String,
     password: String,
     avatarIcon: Number,
-    handle: {String, unique: true},
+    handle: {type: String, unique: true},
     userName: String,
     joined: Number,
 }, {collection: 'admin'});
