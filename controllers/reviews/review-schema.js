@@ -7,7 +7,7 @@ const schema = mongoose.Schema({
     userId: ObjectId,
     itemName: String,
     artist: String,
-    comments: [{date: Date, reviewID: ObjectId, comment: String}],
+    comments: [{date: Number, reviewID: ObjectId, comment: String}],
     art: String,
     date: Number,
     review: String,
