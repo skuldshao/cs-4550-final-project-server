@@ -9,7 +9,7 @@ const schema = mongoose.Schema({
     artist: String,
     comments: [{date: Date, reviewID: ObjectId, comment: String}],
     art: String,
-    date: Date,
+    date: Number,
     review: String,
     rating: Number,
 }, {collection: 'review'});

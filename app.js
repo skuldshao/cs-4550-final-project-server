@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const CONNECTION_STRING = "fill_in_here";
+const CONNECTION_STRING = "mongodb://127.0.0.1:27017/goodsounds";
 mongoose.connect(CONNECTION_STRING);
 
 AdminController(app);
