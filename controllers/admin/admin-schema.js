@@ -5,7 +5,7 @@ const schema = mongoose.Schema({
     number: Number,
     adminKey: String,
     password: String,
-    avatarIcon: Number,
+    avatarIcon: String,
     handle: {type: String, unique: true},
     userName: String,
     joined: Number,
