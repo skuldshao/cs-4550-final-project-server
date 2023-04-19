@@ -3,10 +3,12 @@ import * as adminDao from "./admin-dao.js";
 const AuthController = (app) => {
     const register = async (req, res) => {
         const handle = req.body.handle;
-        const password = req.body.password;
-        const admin = await adminDao
+        const email = req.body.email;
+        const handleAdmin = await adminDao
             .findAdminByHandle(handle);
-        if (admin) {
+        const emailAdmin = await adminDao
+            .findAdminByEmail(email);
+        if (handleAdmin || emailAdmin) {
             res.sendStatus(409);
             return;
         }
