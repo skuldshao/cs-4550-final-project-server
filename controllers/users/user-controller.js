@@ -13,7 +13,7 @@ const findUserById = async (req, res) => {
 
 const createUser = async (req, res) => {
     const newUser = req.body;
-    newUser.joined = 2023;
+    newUser.joined = Date.now();
     newUser.following = [];
     newUser.followers = [];
     newUser.reviews = [];
@@ -31,20 +31,22 @@ const updateUser = async (req, res) => {
     const status = await userDao
         .updateUser(userIdToUpdate,
             updates);
-    res.json(status);
+    console.log(status)
+    res.send(status);
 }
 
 const deleteUser = async (req, res) => {
     const userIdToDelete = req.params.userId;
     const status = await userDao
         .deleteUser(userIdToDelete);
-    res.json(status);
+    res.send(status);
 }
 
 export default (app) => {
     app.post('/api/users', createUser);
     app.get('/api/users', findUsers);
     app.get('/api/users/:userId', findUserById);
+    app.get('/api/users/followers/:userId', findUserFollowersById);
     app.put('/api/users/:userId', updateUser);
     app.delete('/api/users/:userId', deleteUser);
 }
