@@ -50,4 +50,5 @@ const AuthController = (app) => {
     app.post("/api/admin/profile", profile);
     app.post("/api/admin/logout", logout);
 };
+
 export default AuthController;

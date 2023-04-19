@@ -6,7 +6,7 @@ import ReviewController from "./controllers/reviews/review-controller.js";
 import UserController from "./controllers/users/user-controller.js";
 import session from "express-session";
 import UserAuthController from "./controllers/users/auth-controller.js";
-import AdminAuthController from "./controllers/users/auth-controller.js";
+import AdminAuthController from "./controllers/admin/auth-controller.js";
 
 const app = express();
 app.use(
