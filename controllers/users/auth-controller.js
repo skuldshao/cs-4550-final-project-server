@@ -24,6 +24,7 @@ const AuthController = (app) => {
         const user = await usersDao
             .findUserByEmailPassword(email, password);
         if (user) {
+            // console.log(user);
             req.session["currentUser"] = user;
             res.json(user);
         } else {
@@ -33,8 +34,8 @@ const AuthController = (app) => {
 
     const profile = async (req, res) => {
         const currentUser = req.session["currentUser"];
-        console.log(currentUser);
         if (!currentUser) {
+            console.log("I SHOULDN'T BE HERE")
             res.sendStatus(404);
             return;
         }
@@ -48,7 +49,7 @@ const AuthController = (app) => {
 
     app.post("/api/users/register", register);
     app.post("/api/users/login", login);
-    app.post("/api/users/profile", profile);
+    app.get("/api/users/profile", profile);
     app.post("/api/users/logout", logout);
 };
 
