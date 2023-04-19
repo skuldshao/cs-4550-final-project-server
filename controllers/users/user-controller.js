@@ -46,7 +46,6 @@ export default (app) => {
     app.post('/api/users', createUser);
     app.get('/api/users', findUsers);
     app.get('/api/users/:userId', findUserById);
-    app.get('/api/users/followers/:userId', findUserFollowersById);
     app.put('/api/users/:userId', updateUser);
     app.delete('/api/users/:userId', deleteUser);
 }
