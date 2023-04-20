@@ -11,6 +11,13 @@ const findUserById = async (req, res) => {
     res.json(user);
 }
 
+const findUserByEmailPassword = async (req, res) => {
+    const email = req.params.email;
+    const password = req.params.email;
+    const user = await userDao.findUserByEmailPassword(email, password);
+    res.json(user);
+}
+
 const createUser = async (req, res) => {
     const newUser = req.body;
     newUser.joined = Date.now();
@@ -46,6 +53,7 @@ export default (app) => {
     app.post('/api/users', createUser);
     app.get('/api/users', findUsers);
     app.get('/api/users/:userId', findUserById);
+    app.get('/api/users/:email/:password', findUserByEmailPassword);
     app.put('/api/users/:userId', updateUser);
     app.delete('/api/users/:userId', deleteUser);
 }

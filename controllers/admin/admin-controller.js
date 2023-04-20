@@ -11,6 +11,13 @@ const findAdminById = async (req, res) => {
     res.json(admin);
 }
 
+const findAdminByEmailPassword = async (req, res) => {
+    const email = req.params.email;
+    const password = req.params.password;
+    const admin = await adminDao.findAdminByEmailPassword(email, password);
+    res.json(admin);
+}
+
 const createAdmin = async (req, res) => {
     const newAdmin = req.body;
     newAdmin.adminKey = "secretKey";
@@ -40,6 +47,7 @@ export default (app) => {
     app.post('/api/admin', createAdmin);
     app.get('/api/admin', findAdmins);
     app.get('/api/admin/:adminId', findAdminById);
+    app.get('/api/admin/:email/:password', findAdminByEmailPassword);
     app.put('/api/admin/:adminId', updateAdmin);
     app.delete('/api/admin/:adminId', deleteAdmin);
 }
