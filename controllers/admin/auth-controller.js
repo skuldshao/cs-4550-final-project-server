@@ -45,8 +45,16 @@ const AuthController = (app) => {
         res.sendStatus(200);
     };
 
+    const update = async (req, res) => {
+        req.session["currentAdmin"] = req.body;
+        const status = await adminDao
+            .updateAdmin(req.body._id, req.body);
+        res.send(status)
+    }
+
     app.post("/api/admin/register", register);
     app.post("/api/admin/login", login);
+    app.put("/api/admin/update", update);
     app.get("/api/admin/profile", profile);
     app.post("/api/admin/logout", logout);
 };
