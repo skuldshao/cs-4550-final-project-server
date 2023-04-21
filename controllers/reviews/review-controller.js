@@ -6,7 +6,7 @@ const findReviews = async (req, res) => {
 }
 
 const findReviewsBySongId = async (req, res) => {
-    const songId = req.params.itemId;
+    const songId = req.params.songId;
     const review = await reviewDao.findReviewsBySongId(songId);
     res.json(review);
 }
