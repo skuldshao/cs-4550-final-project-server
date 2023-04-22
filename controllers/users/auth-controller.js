@@ -37,7 +37,8 @@ const AuthController = (app) => {
             res.sendStatus(404);
             return;
         }
-        res.json(currentUser);
+        const returnUser = await usersDao.findUserById(currentUser._id)
+        res.json(returnUser);
     };
 
     const logout = async (req, res) => {

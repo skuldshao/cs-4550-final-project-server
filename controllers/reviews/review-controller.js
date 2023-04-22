@@ -1,4 +1,5 @@
 import * as reviewDao from './review-dao.js'
+import * as userDao from '../users/user-dao.js'
 
 const findReviews = async (req, res) => {
     const reviews = await reviewDao.findReviews();
@@ -28,6 +29,14 @@ const createReview = async (req, res) => {
     newReview.date = Date.now();
     const insertedReview = await reviewDao
         .createReview(newReview);
+
+    const user = await userDao.findUserById(newReview.userId);
+    console.log(user);
+    console.log(insertedReview);
+    const newReviews = [...user.reviews, insertedReview._id];
+    console.log(newReviews);
+    await userDao.updateUserReviews(user._id, { reviews: newReviews } );
+
     res.json(insertedReview);
 }
 
