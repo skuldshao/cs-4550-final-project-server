@@ -20,7 +20,6 @@ const findUserByEmailPassword = async (req, res) => {
 
 const createUser = async (req, res) => {
     const newUser = req.body;
-    newUser.joined = Date.now();
     newUser.following = [];
     newUser.followers = [];
     newUser.reviews = [];

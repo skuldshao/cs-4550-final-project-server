@@ -21,7 +21,6 @@ const findAdminByEmailPassword = async (req, res) => {
 const createAdmin = async (req, res) => {
     const newAdmin = req.body;
     newAdmin.adminKey = "secretKey";
-    newAdmin.joined = Date.now();
     const insertedAdmin = await adminDao
         .createAdmin(newAdmin);
     res.json(insertedAdmin);
