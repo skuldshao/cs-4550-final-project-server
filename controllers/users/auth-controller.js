@@ -49,7 +49,6 @@ const AuthController = (app) => {
         req.session["currentUser"] = req.body;
         const status = await usersDao
             .updateUser(req.body._id, req.body);
-        console.log(req.body)
         res.send(status)
     }
 
