@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const ObjectId = mongoose.Types.ObjectId;
 
 const schema = mongoose.Schema({
-    itemID: String,
+    itemId: String,
     userId: ObjectId,
     itemName: String,
     artist: String,
