@@ -12,6 +12,7 @@ const schema = mongoose.Schema({
     date: Number,
     review: String,
     rating: Number,
+    type: String,
 }, {collection: 'review'});
 
 export default schema;
