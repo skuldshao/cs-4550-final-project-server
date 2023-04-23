@@ -8,9 +8,7 @@ const findReviews = async (req, res) => {
 
 const findReviewsBySongId = async (req, res) => {
     const songId = req.params.songId;
-    console.log(songId)
     const review = await reviewDao.findReviewsBySongId(songId);
-    console.log(review)
     res.json(review);
 }
 
@@ -27,17 +25,16 @@ const findReviewById = async (req, res) => {
 }
 
 const createReview = async (req, res) => {
-    const newReview = req.body;
+    const received = req.body;
+    const newReview = received.newReview;
+    const forUser = received.newReviewForUser;
     newReview.date = Date.now();
     const insertedReview = await reviewDao
         .createReview(newReview);
     const user = await userDao.findUserById(newReview.userId);
-    const rev = {"itemID": newReview.itemID, "rating": newReview.rating,
-        "artist": newReview.artist,
-        "itemName": newReview.itemName,
-        "review": newReview.review,
-        "date": newReview.date, "art": newReview.art}
-    await userDao.updateUser(req.body.userId, {...user, "reviews": [...user.reviews, rev]})
+    const newRev = [...user.reviews, forUser];
+    const newUser = {user, "reviews": newRev}
+    await userDao.updateUser(user._id, newUser)
     res.json(insertedReview);
 }
 

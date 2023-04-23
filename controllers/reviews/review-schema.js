@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const ObjectId = mongoose.Types.ObjectId;
 
 const schema = mongoose.Schema({
-    itemId: String,
+    itemID: String,
     userId: ObjectId,
     itemName: String,
     artist: String,
@@ -12,6 +12,7 @@ const schema = mongoose.Schema({
     date: Number,
     review: String,
     rating: Number,
+    itemType: String
 }, {collection: 'review'});
 
 export default schema;
