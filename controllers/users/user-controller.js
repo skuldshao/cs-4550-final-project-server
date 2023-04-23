@@ -37,7 +37,6 @@ const updateUser = async (req, res) => {
     const status = await userDao
         .updateUser(userIdToUpdate,
             updates);
-    console.log(status)
     res.send(status);
 }
 
