@@ -37,14 +37,15 @@ const updateUser = async (req, res) => {
     const status = await userDao
         .updateUser(userIdToUpdate,
             updates);
-    res.json(status);
+    console.log(status)
+    res.send(status);
 }
 
 const deleteUser = async (req, res) => {
     const userIdToDelete = req.params.userId;
     const status = await userDao
         .deleteUser(userIdToDelete);
-    res.json(status);
+    res.send(status);
 }
 
 export default (app) => {
