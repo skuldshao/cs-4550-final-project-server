@@ -7,3 +7,4 @@ export const findUserByEmailPassword = (email, password) => userModel.findOne({e
 export const createUser = (user) => userModel.create(user);
 export const deleteUser = (userId) => userModel.deleteOne({_id: userId});
 export const updateUser = (userId, user) => userModel.updateOne({_id: userId}, {$set: user})
+export const updateUserReviews = (userId, reviews) => userModel.updateOne({_id: userId}, {$set: reviews})
