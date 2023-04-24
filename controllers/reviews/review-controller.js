@@ -26,15 +26,16 @@ const findReviewById = async (req, res) => {
 
 const createReview = async (req, res) => {
     const received = req.body;
-    const newReview = received.newReview;
-    const forUser = received.newReviewForUser;
-    newReview.date = Date.now();
+    // const newReview = received.newReview;
+    // const forUser = received.newReviewForUser;
+    received.date = Date.now();
     const insertedReview = await reviewDao
-        .createReview(newReview);
-    const user = await userDao.findUserById(newReview.userId);
-    const newRev = [...user.reviews, forUser];
-    const newUser = {user, "reviews": newRev}
-    await userDao.updateUser(user._id, newUser)
+        .createReview(received);
+    // const user = await userDao.findUserById(newReview.userId);
+    // const newRev = [...user.reviews, forUser];
+    // const newUser = {user, "reviews": newRev}
+    // await userDao.updateUser(user._id, newUser)
+    // await userDao.updateUser(user._id, newUser)
     res.json(insertedReview);
 }
 
