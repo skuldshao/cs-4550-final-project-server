@@ -18,7 +18,7 @@ const schema = mongoose.Schema({
     reviews: [{itemID: String, rating: Number, artist: String, itemName: String, review: String, date: Number, art: String, itemType: String}],
     favoriteSongs: [{date: Number, musicID: String}],
     newSongs: [{date: Number, musicID: String}],
-    comments:[{date: Number, reviewID: ObjectId, comment: String}]
+    comments:[{date: Number, reviewID: ObjectId, comment: String, itemType: String}]
 }, {collection: 'users'});
 
 export default schema;
